@@ -1,0 +1,28 @@
+Component name "Menu" should always be multi-word vue/multi-word-component-names 오류 해결법
+
+
+
+- 컴포넌트는 2단어 이상으로 짧고 간략하게 작성해야 함.
+- 
+----------------------------------------------------------------
+ESLint error
+
+1. 'vue.config.js' 파일에 열기
+2. 
+const { defineConfig } = require('@vue/cli-service')
+module.exports = defineConfig({
+  transpileDependencies: true,
+  lintOnSave : false
+})
+해당 코드로 수정 후 저장
+
+----------------------------------------------------------------
+multi-word-component-names error
+
+3.  package.json 파일 열어서 "rules" 라는 항목에
+4. 
+"rules": {
+   "vue/multi-word-component-names": "off"
+} 
+해당 코드로 수정 후 저장
+----------------------------------------------------------------

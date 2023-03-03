@@ -1,0 +1,39 @@
+props란?
+    - App.vue파일에 있는 데이터를 전송하는 함수
+    - App.vue 내에 있는 모든 components들은 자식 components이다.
+    - components들은 App.vue가 부모임.
+
+    
+    - 사용법 
+        # 1.데이터보내고 2.등록하고 3.사용
+        # v-bind ( : ), 전송할 데이터를 보내기 전 사용(데이터바인딩 시)
+
+-----------------------------------------------------------------
+** 부모 components에서 만들어논 .vue 파일 import, 등록 후 사용
+
+-----------------------------------------------------------------
+** 부모 components에서 사용
+        1.
+            <ModalCmp
+            :oneRooms="oneRooms" 
+            :titleClickEventHandler="titleClickEventHandler"
+            :oneRoomsData="oneRoomsData"
+            :modal="modal"/>
+
+            1-1. ModalCmp는 components로 받아온 .vue 파일을 할당받은 변수
+            1-2. :oneRooms="oneRooms" ....은 
+                 부모 components에서 자식 components로 보낼 데이터
+
+-----------------------------------------------------------------
+** 자식 components에서 사용
+
+        2. 
+            props : {
+            oneRooms : Array,
+            titleClickEventHandler : Function,
+            oneRoomsData : Number,
+            modal : Boolean
+            }
+
+            2-1. 전달받은 데이터명 : 데이터의 자료형 
+              

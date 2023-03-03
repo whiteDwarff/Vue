@@ -1,25 +1,36 @@
 <template>
 
+
+  <ModalCmp
+  :oneRooms="oneRooms" 
+  :titleClickEventHandler="titleClickEventHandler"
+  :oneRoomsData="oneRoomsData"
+  :modal="modal"/>
+  <!-- modal -->
   <div class="menu">
-    <!-- 
-      v-for : 
-      <tagName v-for="data in 반복횟수 || data" :key="data">{{ data }}</tagName>
-      - html 내 반복문
-      - in은 참조할 데이터 입력
-      - key 없을 시 오류발생, 반복문 돌린 요소를 컴퓨터가 구분하기 위해 사용 (data의 index)
-      - data 입력 시 data의 갯수만큼 반복실행
-    -->
     <a v-for="(data, i) in menu" :key="i">{{ data }}</a>
-  </div>
-  <div v-for="(data, i) in products" :key="i">
-    <h4 :style="style">{{ data }}</h4>
-    <p>{{ price[i] }}</p>
-    <button @click="countEventHandler(i)">허위매물신고</button>
-    <span>신고 수 : {{ count[i] }}</span>
-  </div>
+  </div><!-- nav -->
+  <DiscountBanner/>
+  <ProductsCmp
+  :oneRooms="oneRooms"
+  :styleRed="styleRed"
+  :titleClickEventHandler="titleClickEventHandler"
+  :countEventHandler="countEventHandler"
+  />
+
+
 
 </template>
 <script>
+
+import {apple, apple2} from './script/oneroom.js';
+console.log(apple, apple2);
+
+// 외부파일을 가져옴 
+import data from './script/oneroom.js';
+import DiscountBanner from './component/DiscountBanner.vue';
+import ModalCmp from './component/ModalCmp.vue';
+import ProductsCmp from './component/ProductsCmp.vue';
 
 export default {
   name: 'App',
@@ -27,44 +38,75 @@ export default {
     return {
       // 데이터 보관함, 데이터는 object 자료로 저장, 데이터의 이름 : 값
       menu : ['Home', 'Shop', 'About'],
-      style : 'color : red',
-      price : [50, 70, 85],
-      products : ['역삼동원룸', '천호동원룸', '마포구원룸'],
-      count : [0,0,0]
+      oneRooms : data,
+      oneRoomsData : 0,
+      styleRed : 'color: red',
+      modal : false,
     }
   },
-  methods : {
+  methods : {  
+    // function 선언부
+    // 함수 내에서 데이터를 쓸 경우 this 연산자 사용
     countEventHandler(i) {
-      this.count[i]++;
+      this.oneRooms[i].fakeReport++;
+    },
+    titleClickEventHandler(i) {
+      this.modal = true;
+      this.oneRoomsData = i;
     }
   },
   components: {
-  }
+    DiscountBanner,
+    ModalCmp,
+    ProductsCmp,
+  },
 }
-/*
-  데이터 바인팅 하는 이유  {{ }}
-    - HTML 하드 코딩 시 변경작업이 까다롭다.
-    - vue가 제공하는 실시간 렌더링 기능을 쓰려면 필요함 (웹앱 )
-    - 자주 변하는 데이터들은 데이터로 보관해야한다!!
-*/
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 200;
   text-align: center;
-  color: #2c3e50;
+  box-sizing: border-box;
 }
+
 .menu {
+  width: 100%;
   background-color: darkslateblue;
   padding: 15px;
-  border-radius : 5px;
 }
 .menu a {
   color: white;
   padding: 10px;
   text-decoration: none;
+}
+#products-wrap {  
+  width: 100%;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+}
+.products {
+  width: 33.33%;
+  display: inline-block;
+  padding-bottom: 30px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.products-img {
+  width: 90%;
+  margin: 30px 0;
+}
+.products h4 {
+  font-weight: 400;
+}
+.products p {
+  margin: 10px 0;
+}
+.products button {
+  margin-right: 10px;
 }
 </style>
