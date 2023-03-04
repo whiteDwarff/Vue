@@ -1,7 +1,7 @@
 <template>
     <div class="products">
         <img class="products-img" :src="oneRooms.image">
-        <h4 :style="styleRed" @click="$emit('open`Modal`')">{{ oneRooms.title }}</h4>
+        <h4 :style="styleRed" @click="$emit('openModal')">{{ oneRooms.title }}</h4>
         <p>{{ `월 ${oneRooms.price}원` }}</p>
         <button @click="$emit('fakeReport')">허위매물신고</button>
         <span>신고 수 : {{ oneRooms.fakeReport + '회'}}</span>

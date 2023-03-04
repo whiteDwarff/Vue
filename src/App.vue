@@ -2,6 +2,7 @@
 
 
   <ModalCmp
+  @modalClose="modal=false"
   :oneRooms="oneRooms"
   :oneRoomsData="oneRoomsData"/> <!-- modal -->
   <div class="menu">

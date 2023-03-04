@@ -19,9 +19,8 @@ export default {
         DiscountBanner
     },
     props : {
-        oneRooms : Array,
+        oneRooms : Object,
         oneRoomsData : Number,
-        // modal : Boolean
     }
 }
 </script>
