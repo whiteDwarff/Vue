@@ -1,11 +1,11 @@
 <template>
-    <div class="black-bg" v-if="modal == true">
+    <div class="black-bg" v-if="modal==true">
         <div class="white-bg">
         <img :src="oneRooms[oneRoomsData].image">
         <h4>{{ oneRooms[oneRoomsData].title }}</h4>
         <p>{{ oneRooms[oneRoomsData].content }}</p>
         <DiscountBanner/>
-        <button @click="modal = false">닫기</button>
+        <button @click="$emit('modalClose')">닫기</button>
         </div>
     </div><!-- modal -->
 </template>
@@ -20,11 +20,9 @@ export default {
     },
     props : {
         oneRooms : Array,
-        titleClickEventHandler : Function,
         oneRoomsData : Number,
-        modal : Boolean
+        // modal : Boolean
     }
-    
 }
 </script>
 
@@ -49,5 +47,9 @@ export default {
 }
 .white-bg img {
     width: 90%;
+}
+.white-bg h4 {
+    padding-top: 20px; padding-bottom: 10px;
+    font-weight: 400; 
 }
 </style>

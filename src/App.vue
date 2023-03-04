@@ -2,32 +2,28 @@
 
 
   <ModalCmp
-  :oneRooms="oneRooms" 
-  :titleClickEventHandler="titleClickEventHandler"
-  :oneRoomsData="oneRoomsData"
-  :modal="modal"/>
-  <!-- modal -->
+  :oneRooms="oneRooms"
+  :oneRoomsData="oneRoomsData"/> <!-- modal -->
   <div class="menu">
     <a v-for="(data, i) in menu" :key="i">{{ data }}</a>
   </div><!-- nav -->
   <DiscountBanner/>
-  <ProductsCmp
-  :oneRooms="oneRooms"
+
+  <div id="products-wrap">
+  <ProductsCmp v-for="(data, i) in oneRooms" :key="i"
+  @openModal="titleClickEventHandler(i)"
+  @fakeReport="countEventHandler(i)"
+  @modalClose="modal=false"
+  :oneRooms="oneRooms[i]"
   :styleRed="styleRed"
-  :titleClickEventHandler="titleClickEventHandler"
-  :countEventHandler="countEventHandler"
-  />
-
-
+  /><!-- product -->
+</div>
 
 </template>
 <script>
-
-import {apple, apple2} from './script/oneroom.js';
-console.log(apple, apple2);
-
-// 외부파일을 가져옴 
+// oneRooms Data 
 import data from './script/oneroom.js';
+// components
 import DiscountBanner from './component/DiscountBanner.vue';
 import ModalCmp from './component/ModalCmp.vue';
 import ProductsCmp from './component/ProductsCmp.vue';
@@ -45,7 +41,6 @@ export default {
     }
   },
   methods : {  
-    // function 선언부
     // 함수 내에서 데이터를 쓸 경우 this 연산자 사용
     countEventHandler(i) {
       this.oneRooms[i].fakeReport++;
@@ -73,7 +68,6 @@ export default {
   text-align: center;
   box-sizing: border-box;
 }
-
 .menu {
   width: 100%;
   background-color: darkslateblue;
@@ -85,28 +79,8 @@ export default {
   text-decoration: none;
 }
 #products-wrap {  
-  width: 100%;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-}
-.products {
-  width: 33.33%;
-  display: inline-block;
-  padding-bottom: 30px;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-}
-.products-img {
-  width: 90%;
-  margin: 30px 0;
-}
-.products h4 {
-  font-weight: 400;
-}
-.products p {
-  margin: 10px 0;
-}
-.products button {
-  margin-right: 10px;
+    width: 100%;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
 }
 </style>

@@ -1,11 +1,11 @@
     components 쓰는 법
         - 1. 새로운 component 파일 작성 후 import 해오기
-            # import 작명 from './파일경로';
-            # 파일명과 작명은 무조건 대문자로 시작
+            # import 변수 from './파일경로';
+            # 파일명과 변수는 무조건 대문자로 시작
         - 2. 등록하기 
-                # object 내 components 공간에 
+                # object 내 components 공간에 받아온 데이터 변수 넣기
                 # object의 key와 value의 이름이 같을 때 key 값만 사용해도  오류 발생 x 
-        - 3. 등록한 key 값을 <template> 내 원하는 위치에 선언
+        - 3. 등록한 변수를 <template> 내 원하는 위치에 선언
 
 ------------------------------------------------------------------------------
 
