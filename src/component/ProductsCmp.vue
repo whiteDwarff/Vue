@@ -41,5 +41,6 @@ export default {
 .products button {
     margin-right: 10px;
     padding: 5px;
+    cursor : pointer;
 }
 </style>

@@ -1,0 +1,21 @@
+** input event
+
+    @input=""
+        - input에 내용이 입력되면 실행
+    
+    @change=""
+        - input에서 focus가 벗어나면 실행
+
+    $event 
+        - HTML 요소에 addEventListener 부착
+        - $event.target.value = event target의 값
+
+    v-model 
+        - 유저가 <input> || <textarea>에 작성한 데이터를 저장해줘 ~
+        - v-modal.number = 입력값을 숫자로만 받음
+
+
+watcher
+    - 데이터 감시용 
+    - 사용자의 input을 받는다면 필수조건
+    - watch {} object 생성

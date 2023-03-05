@@ -3,9 +3,11 @@
         <div class="white-bg">
         <img :src="oneRooms[oneRoomsData].image">
         <h4>{{ oneRooms[oneRoomsData].title }}</h4>
+        <input type="text" v-model.number="month">
+        <p>{{ month }}개월 선택 :  {{ oneRooms[oneRoomsData].price * month }}원</p>
         <p>{{ oneRooms[oneRoomsData].content }}</p>
         <DiscountBanner/>
-        <button @click="$emit('modalClose')">닫기</button>
+        <button @click="$emit('closeModal')">닫기</button>
         </div>
     </div><!-- modal -->
 </template>
@@ -18,9 +20,24 @@ export default {
     components : {
         DiscountBanner
     },
+    data() {
+        return {
+            month : 1,
+
+        }
+    },
+    // 사용자의 input을 control
+    watch : {
+        month() {
+
+        }
+    },
     props : {
-        oneRooms : Object,
+        modal : Boolean,
+        oneRooms : Array,
         oneRoomsData : Number,
+    },
+    methods : {
     }
 }
 </script>
@@ -50,5 +67,11 @@ export default {
 .white-bg h4 {
     padding-top: 20px; padding-bottom: 10px;
     font-weight: 400; 
+}
+.white-bg input {
+    margin-bottom: 10px;
+    text-align: left;
+    padding-left: 10px;
+    outline: none;
 }
 </style>

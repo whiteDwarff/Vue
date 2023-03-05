@@ -2,7 +2,8 @@
 
 
   <ModalCmp
-  @modalClose="modal=false"
+  @closeModal="modal=false"
+  :modal="modal"
   :oneRooms="oneRooms"
   :oneRoomsData="oneRoomsData"/> <!-- modal -->
   <div class="menu">
@@ -14,7 +15,6 @@
   <ProductsCmp v-for="(data, i) in oneRooms" :key="i"
   @openModal="titleClickEventHandler(i)"
   @fakeReport="countEventHandler(i)"
-  @modalClose="modal=false"
   :oneRooms="oneRooms[i]"
   :styleRed="styleRed"
   /><!-- product -->
@@ -34,6 +34,7 @@ export default {
   data() {
     return {
       // 데이터 보관함, 데이터는 object 자료로 저장, 데이터의 이름 : 값
+      // event가 발생하는 순서 : title클릭 -> oneRoomsData 변경 -> modal열기
       menu : ['Home', 'Shop', 'About'],
       oneRooms : data,
       oneRoomsData : 0,
@@ -69,6 +70,7 @@ export default {
   text-align: center;
   box-sizing: border-box;
 }
+
 .menu {
   width: 100%;
   background-color: darkslateblue;
