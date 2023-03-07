@@ -1,0 +1,19 @@
+컴포넌트는 웹페이지에 표시되기까지 일련의 step을 거친다.
+그 step을 lifecycle이라고 한다.
+
+1. create 단계
+    - data만 존재하는 단계
+    - HTML이 생성되기 전 
+    - server에서 데이터를 받아올 때 
+2. mount
+    - <template> 사이에 있던걸 실제 HTML로 바꿔줌 {{}} 
+    - HTML이 setting 되고 난 뒤
+3. component 생성
+    - 2번 후 index.html에 장착
+4. update (데이터가 바뀔 때)
+    - data가 변하면 component가 재랜더링됨
+5. unmount (데이터가 삭제될 때)
+    - component가 삭제될 때
+
+
+각 단게에 hook을 걸어 제약조건을 실행할 수 있다.

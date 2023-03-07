@@ -23,13 +23,18 @@ export default {
     data() {
         return {
             month : 1,
-
         }
     },
-    // 사용자의 input을 control
     watch : {
-        month() {
-
+        // 사용자의 input을 control ( data = month 변수)
+        // 데이터의 이름으로 함수명을 만들어야함!!
+        // (parameter1, parameter2) = 변경 후 데이터, 변경 전 데이터
+        month(data) {
+            if(isNaN(data) == true) {
+                console.log(data);
+                this.month = 1;
+                alert('정수만 입력');
+            } 
         }
     },
     props : {

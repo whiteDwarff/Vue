@@ -1,6 +1,6 @@
 <template>
     <div id="discount-banner">
-        <h4>지금 결제하면 20% 할인!</h4>
+        <h4></h4>
     </div>
 </template>
 
@@ -9,7 +9,6 @@ export default {
     name: 'DiscountBanner',
 }
 </script>
-
 <style>
 #discount-banner{
     background-color: #eee;
